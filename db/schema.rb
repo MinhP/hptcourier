@@ -24,26 +24,26 @@ ActiveRecord::Schema.define(version: 20141203030348) do
     t.string  "name"
     t.string  "description"
     t.decimal "price"
-    t.integer "eventid"
+    t.integer "event_id"
     t.string  "imageurl"
   end
 
   create_table "orderitems", force: true do |t|
-    t.integer "orderid"
-    t.integer "itemid"
+    t.integer "order_id"
+    t.integer "item_id"
     t.integer "quantity"
   end
 
   create_table "orders", force: true do |t|
-    t.integer "userid"
-    t.integer "eventid"
-    t.integer "buyerid"
-    t.integer "holderid"
-    t.integer "courierid"
+    t.integer "user_id"
+    t.integer "event_id"
+    t.integer "buyer_id"
+    t.integer "holder_id"
+    t.integer "courier_id"
   end
 
   create_table "trips", force: true do |t|
-    t.integer  "userid"
+    t.integer  "user_id"
     t.string   "destination"
     t.datetime "startdate"
     t.datetime "enddate"

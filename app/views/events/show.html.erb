@@ -1,4 +1,5 @@
 <div>Event: <%= @event.name %></div>
+<div><%= "Order Exists" if @order_status %></div>
 <table>
 <% @items.each do |item| %>
 <tr>

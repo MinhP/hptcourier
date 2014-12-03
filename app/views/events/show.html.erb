@@ -1,0 +1,10 @@
+<div>Event: <%= @event.name %></div>
+<table>
+<% @items.each do |item| %>
+<tr>
+<td><%= item.name %></td>
+<td><%= item.description %></td>
+<td><%= item.price %></td>
+</tr>
+<% end %>
+</table>

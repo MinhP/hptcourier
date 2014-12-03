@@ -1,0 +1,12 @@
+<div>Add Event</div>
+<table>
+<% @events.each do |event| %>
+<tr>
+  <td><%= link_to '>View', :action => :show, :id => event.id %></td>
+  <td><%= event.date.to_date %></td>
+  <td><%= event.name %></td>
+  <td><%= event.location %></td>
+  <td>(Going/Not Going)</td>
+</tr>
+<% end %>
+</table>

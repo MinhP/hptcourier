@@ -1,8 +1,14 @@
-<div>Event: <%= @event.name %></div>
-<div><%= "Order Exists" if @order_status %></div>
-<table>
+<div class=""><h1>Event: <%= @event.name %></h1></div>
+<table class="table">
+<tr>
+  <th></th>
+  <th>Item Name</th>
+  <th>Item Description</th>
+  <th>Price</th>
+</tr>
 <% @items.each do |item| %>
 <tr>
+<td>IMAGE HERE</td>
 <td><%= item.name %></td>
 <td><%= item.description %></td>
 <td><%= item.price %></td>

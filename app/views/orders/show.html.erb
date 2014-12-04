@@ -1,0 +1,26 @@
+<h3>Order <%= params[:id] %></h3>
+<table class="table">
+<tr>
+  <th>Item Name</th>
+  <th>Item Description</th>
+  <th>Unit Price</th>
+  <th>Quanitity</th>
+  <th>Total Price</th>
+</tr>
+<% @items.each do |item| %>
+<tr>
+<td><%= item['name'] %></td>
+<td><%= item['description'] %></td>
+<td><%= item['price'] %></td>
+<td><%= item['quantity'] %></td>
+<td><%= item['total_price'] %></td>
+</tr>
+<% end %>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Total</td>
+  <td><%= @total_price %></td>
+</tr>
+</table>

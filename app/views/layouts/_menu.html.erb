@@ -1,7 +1,10 @@
-<div class="menu">
-<%= link_to "Events", :controller => :events, :action => :index %>
-|
-My Orders
-|
-Orders
-</div>
+<%= nav_bar :brand => "HPT Courier Services" do %>
+  <%= menu_group do %>
+    <%= drop_down "Events" do %>
+      <%= menu_item "List Events", url_for(:controller => :events) %>
+      <%= menu_item "Add Events", url_for(:controller => :events, :action => :new) %>
+    <% end %>
+    <%= menu_item "My Orders", url_for(:controller => :orders, :action => :list) %>
+    <%= menu_item "All Orders", url_for(:controller => :orders, :action => :index) %>
+  <% end %>
+<% end %>

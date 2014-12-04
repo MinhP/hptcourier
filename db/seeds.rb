@@ -13,4 +13,5 @@ Item.create([
 ])
 Order.create(user_id: 1, event_id: 1)
 Orderitem.create(order_id: 1, item_id: 1, quantity: 765)
+Orderitem.create(order_id: 1, item_id: 2, quantity: 72)
 User.create(name: "MinhP", email: "lol@dot.com", instructions: "bitcoins pls")

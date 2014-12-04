@@ -1,0 +1,15 @@
+<h3>My Orders</h3>
+<table class="table">
+<tr>
+  <th>Event Name</th>
+  <th>Total Price</th>
+</tr>
+<% @orders.each do |order| %>
+<tr>
+  <td><%= link_to '>View Order', :action => :show, :id => order.id %></td>
+  <td><%= event.name %></td>
+  <td><%= event.location %></td>
+  <td>(Going/Not Going)</td>
+</tr>
+<% end %>
+</table>

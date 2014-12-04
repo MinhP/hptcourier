@@ -1,0 +1,18 @@
+<h3>All Orders</h3>
+<table class="table">
+<tr>
+  <th>Order Number</th>
+  <th>Who</th>
+  <th>Event Name</th>
+  <th>Price</th>
+  <th></th>
+</tr>
+<% @orders.each do |order| %>
+<tr>
+  <td><%= link_to order.id, :action => :show, :id => order.id %></td>
+  <td><%= print_user_name(order.user_id) %></td>
+  <td><%= print_event_name(order.event_id) %></td>
+  <td><%= order_total(order.id) %></td>
+</tr>
+<% end %>
+</table>

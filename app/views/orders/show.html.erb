@@ -1,5 +1,9 @@
-<h3>Order <%= params[:id] %></h3>
-<table class="table">
+<h3>Order: <%= params[:id] %></h3>
+<ul>
+<li><%= @name %></li>
+<li><%= @event %></li>
+</ul>
+<table class="table table-striped">
 <tr>
   <th>Item Name</th>
   <th>Item Description</th>

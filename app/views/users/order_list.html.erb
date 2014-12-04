@@ -1,4 +1,4 @@
-<h3>My Orders</h3>
+<h3>Orders for <%= @name %></h3>
 <table class="table">
 <tr>
   <th>Order Number</th>
@@ -10,7 +10,7 @@
 <tr>
   <td><%= order['id'] %></td>
   <td><%= order['name'] %></td>
-  <td><%= order['location'] %></td>
+  <td><%= get_order_total(order['id']) %></td>
   <td><%= link_to "View Order", order_path(order['id']), :class => "btn-sm btn-primary" %></td>
 </tr>
 <% end %>

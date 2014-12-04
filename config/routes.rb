@@ -15,12 +15,10 @@ Rails.application.routes.draw do
   #   resources :products
   root 'events#index'
   resources :events
-
-  get 'orders/list' => 'orders#list'
-
-  resources :orders do
+  resources :orders
+  resources :users do
     member do
-      get 'list'
+      get :order_list
     end
   end
 

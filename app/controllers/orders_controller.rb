@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
   include OrdersHelper
+  include EventsHelper
+  include UsersHelper
 
   def index
     @orders = Order.all
-  end
-
-  def list
-    @orders = Order.where(user_id: 1)
   end
 
   def show
@@ -21,5 +19,7 @@ class OrdersController < ApplicationController
       item_hash.merge!('total_price' => total_price)
       @items << item_hash
     end
+    @event = get_event_name(@items.first['event_id'])
+    @name = get_user_name(Order.find(params[:id]).user_id)
   end
 end

@@ -1,0 +1,15 @@
+<h3>Useres</h3>
+<table class="table">
+<tr>
+  <th>Name</th>
+  <th>E-mail</th>
+  <th></th>
+</tr>
+<% @users.each do |user| %>
+<tr>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td><%= link_to "Orders", order_list_user_path(user.id), :class => "btn btn-sm btn-primary" %></td>
+</tr>
+<% end %>
+</table>

@@ -2,7 +2,7 @@
   <%= menu_group do %>
     <%= drop_down "Events" do %>
       <%= menu_item "List Events", events_path %>
-      <%= menu_item "Add Events", new_event_path %>
+      <%= menu_item "Add Events", new_event_path if user_signed_in? %>
     <% end %>
     <%= drop_down "Orders" do %>
       <%= menu_item("My Orders", order_list_user_path(1)) if user_signed_in? %>

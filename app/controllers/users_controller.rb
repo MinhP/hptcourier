@@ -11,6 +11,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def order_list
     @orderslist = Order.where(user_id: params[:id])
     @orders = []

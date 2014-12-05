@@ -16,3 +16,7 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+    $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});
+});

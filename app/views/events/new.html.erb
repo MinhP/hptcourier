@@ -1,1 +1,22 @@
 <h3>Add New Event</h3>
+<table class="table">
+<%= form_for @event, :url => {action: "create"} do |f| -%>
+  <tr>
+    <td><%= f.label "Event Name" %></td>
+    <td><%= f.text_field :name, :required => true %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Location" %></td>
+    <td><%= f.text_field :location, :required => true %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Date" %></td>
+    <td><%= f.text_field :date, :required => true, :class => 'datepicker' %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "URL" %></td>
+    <td><%= f.text_field :url %></td>
+  </tr>
+</table>
+  <%= f.submit "Add Event", :class => "btn btn-sm btn-primary" %>
+<% end -%>

@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :description
       t.decimal :price
       t.integer :event_id
-      t.string :imageurl
+      t.string :image_url
     end
   end
 end

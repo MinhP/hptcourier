@@ -1,0 +1,22 @@
+<h3>Add Item</h3>
+<table class="table">
+<%= form_for @item, :url => {action: "create"} do |f| -%>
+  <tr>
+    <td><%= f.label "Item Name" %></td>
+    <td><%= f.text_field :name, :required => true%></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Description" %></td>
+    <td><%= f.text_field :description %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Price" %></td>
+    <td><%= f.text_field :price, :required => true %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Image URL" %></td>
+    <td><%= f.text_field :image_url %></td>
+  </tr>
+</table>
+  <%= f.submit "Add Item", :class => "btn btn-sm btn-primary" %>
+<% end -%>

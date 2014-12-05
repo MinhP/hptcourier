@@ -1,17 +1,21 @@
-<div class=""><h1>Event: <%= @event.name %></h1></div>
+<div class=""><h3>[<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
+<%= render "event_menu" %>
 <table class="table">
 <tr>
   <th></th>
   <th>Item Name</th>
   <th>Item Description</th>
   <th>Price</th>
+  <th>Quanitity</th>
 </tr>
 <% @items.each do |item| %>
 <tr>
-<td>IMAGE HERE</td>
-<td><%= item.name %></td>
-<td><%= item.description %></td>
-<td><%= item.price %></td>
+  <td>IMAGE HERE</td>
+  <td><%= item.name %></td>
+  <td><%= item.description %></td>
+  <td><%= item.price %></td>
+  <td></td>
 </tr>
 <% end %>
 </table>
+<div class="btn btn-sm btn-success pull-right">Add to Order</div>

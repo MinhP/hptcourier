@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Event.create(name: "iDOLM@STER vs Love Live", location: "Tokyo", date: "2015/04/20")
+Event.create(name: "Some Event", location: "Tokyo", date: "2015/04/20")
 Item.create([
   {name: "Onigiri", description: "This feeds the Miki", price: "100", event_id: 1},
   {name: "Flat Bread", description: "This feeds the Chihaya", price: "100", event_id: 1}

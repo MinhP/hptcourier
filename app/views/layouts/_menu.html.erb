@@ -5,7 +5,7 @@
       <%= menu_item "Add Events", new_event_path if user_signed_in? %>
     <% end %>
     <%= drop_down "Orders" do %>
-      <%= menu_item("My Orders", order_list_user_path(1)) if user_signed_in? %>
+      <%= menu_item("My Orders", order_list_user_path(current_user.id)) if user_signed_in? %>
       <%= menu_item "All Orders", orders_path %>
     <% end %>
     <%= menu_item "Users", users_path %>

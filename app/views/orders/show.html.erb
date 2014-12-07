@@ -10,5 +10,5 @@
 <% end %>
 <%= render "order_total", :order_id => @order.id %>
 </table>
-<%= link_to "Edit Order", edit_order_path(params[:id]), :class => "btn btn-sm btn-primary" %>
-<%= link_to "Delete Order", order_path(params[:id]), :method => :delete, :class => "btn btn-sm btn-danger", 'title' => "Delete Order", 'data-confirm' => "Are you sure you want to delete this order?" %>
+<%= link_to "Edit Order", edit_order_path(params[:id]), :class => "btn btn-sm btn-primary" if current_user.id == @order.user_id %>
+<%= link_to "Delete Order", order_path(params[:id]), :method => :delete, :class => "btn btn-sm btn-danger", 'title' => "Delete Order", 'data-confirm' => "Are you sure you want to delete this order?" if current_user.id == @order.user_id %>

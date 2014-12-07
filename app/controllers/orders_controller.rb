@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
           new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1]['quantity'].to_i, notes: new_item[1]['notes'])
           new_item.save
         else
-          item.first.update_attribute(:quantity, new_item[1]['quantity'].to_i + item.first.quantity)
+          item.first.update_attributes(:quantity => new_item[1]['quantity'].to_i + item.first.quantity, :notes => new_item[1]['notes'])
         end
       end
     end

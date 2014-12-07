@@ -17,13 +17,7 @@ class UsersController < ApplicationController
   end
 
   def order_list
-    @orderslist = Order.where(user_id: params[:id])
-    @orders = []
-    @orderslist.each do |order|
-      order_hash = order.serializable_hash.merge(Event.find(order.event_id).serializable_hash)
-      p order_hash
-      @orders << order_hash
-    end
+    @orders = Order.where(user_id: params[:id])
     @name = get_user_name(params[:id])
   end
 end

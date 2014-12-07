@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    Order.find(params[:id])
     @orderitems = Orderitem.where(order_id: params[:id])
     @total_price = 0
     @items = []
@@ -20,7 +21,70 @@ class OrdersController < ApplicationController
       item_hash.merge!('total_price' => total_price)
       @items << item_hash
     end
-    @event = get_event_name(@items.first['event_id'])
+    @event = Event.find(@items.first['event_id'])
     @name = get_user_name(Order.find(params[:id]).user_id)
   end
+
+  def create
+    # Find person's order for event
+    order = Order.where(event_id: params[:event_id], user_id: current_user.id).first
+    if order.nil?
+      order = Order.new(user_id: current_user.id, event_id: params[:event_id])
+      order.save
+      new_order_items = params[:order]
+      new_order_items.each do |new_item|
+        next if new_item[1].to_i == 0
+        new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1].to_i)
+        new_item.save
+      end
+    else
+      new_order_items = params[:order]
+      new_order_items.each do |new_item|
+        next if new_item[1].to_i == 0
+        item = Orderitem.where(order_id: order.id, item_id: new_item[0])
+        p item
+        if item.empty?
+          new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1].to_i)
+          new_item.save
+        else
+          item.first.update_attribute(:quantity, new_item[1].to_i + item.first.quantity)
+        end
+      end
+    end
+    redirect_to order_path(order.id)
+  end
+
+  def edit
+    @items = Orderitem.where(order_id: params[:id])
+    @order = Order.find(params[:id])
+    @event = Event.find(@order.event_id)
+    redirect_to root_path if current_user.id != @order.user_id
+  end
+
+  def update
+    new_order_items = params[:order]
+    new_order_items.each do |new_item|
+      if new_item[1].to_i == 0
+        Orderitem.where(order_id: params[:id], item_id: new_item[0]).destroy_all
+        next
+      end
+      item = Orderitem.where(order_id: params[:id], item_id: new_item[0])
+      p item
+      item.first.update_attribute(:quantity, new_item[1].to_i)
+    end
+    if Orderitem.where(order_id: params[:id]).empty?
+      Order.find(params[:id]).destroy
+      redirect_to order_list_user_path(current_user.id)
+    else
+      redirect_to order_path(params[:id])
+    end
+  end
+
+  def destroy
+    Orderitem.where(order_id: params[:id]).destroy_all
+    Order.find(params[:id]).destroy
+
+    redirect_to order_list_user_path(current_user.id)
+  end
+  
 end

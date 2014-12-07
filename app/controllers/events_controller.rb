@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @items = Item.where(event_id: params[:id])
     @order_status = true if Order.where(event_id: params[:id], user_id: 1)
+    @order = Order.new
   end
 
   def new

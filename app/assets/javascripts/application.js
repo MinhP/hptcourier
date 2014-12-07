@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
+//= require data-confirm-modal
 //= require turbolinks
 //= require_tree .
 

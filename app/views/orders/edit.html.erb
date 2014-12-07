@@ -1,0 +1,27 @@
+<h3>Order: <%= params[:id] %></h3>
+<ul>
+<li><%= link_to @event.name, event_path(@event.id) %></li>
+</ul>
+<%= form_for @order, :url => {:action => :update, :controller => :orders } do |f| %>
+<table class="table table-striped">
+<tr>
+  <th>Item Name</th>
+  <th>Item Description</th>
+  <th>Unit Price</th>
+  <th>Quanitity</th>
+</tr>
+<% @items.each do |item| %>
+  <tr>
+  <td><%= get_item_name(item.item_id) %></td>
+  <td><%= get_item_description(item.item_id) %></td>
+  <td><%= get_item_price(item.item_id) %></td>
+  <td><%= number_field_tag "order[#{item.item_id}]", item['quantity'], :min => 0 %></td>
+  </tr>
+<% end %>
+<tr>
+  <td/>
+  <td/>
+  <td/>
+  <td><%= f.submit "Edit Order", :class => "btn btn-sm btn-primary pull-right" %></td>
+</table>
+<% end %>

@@ -1,5 +1,7 @@
 <div class=""><h3>[<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
 <%= render "event_menu" %>
+<%= form_for @order, :url => {:action => :create, :controller => :orders } do |f| %>
+<%= hidden_field_tag :event_id, @event.id %>
 <table class="table">
 <tr>
   <th></th>
@@ -9,13 +11,20 @@
   <th>Quanitity</th>
 </tr>
 <% @items.each do |item| %>
-<tr>
-  <td>IMAGE HERE</td>
-  <td><%= item.name %></td>
-  <td><%= item.description %></td>
-  <td><%= item.price %></td>
-  <td></td>
-</tr>
+  <tr>
+    <td>IMAGE HERE</td>
+    <td><%= item.name %></td>
+    <td><%= item.description %></td>
+    <td><%= item.price %></td>
+    <td><%= number_field_tag "order[#{item.id}]", 0, :min => 0 %></td>
+  </tr>
 <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><%= f.submit "Add to Order", :class => "btn btn-sm btn-primary pull-right" %></td>
+  </tr>
 </table>
-<div class="btn btn-sm btn-success pull-right">Add to Order</div>
+<% end %>

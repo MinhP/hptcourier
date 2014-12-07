@@ -1,7 +1,7 @@
 <h3>Order: <%= params[:id] %></h3>
 <ul>
 <li><%= @name %></li>
-<li><%= @event %></li>
+<li><%= link_to @event.name, event_path(@event.id) %></li>
 </ul>
 <table class="table table-striped">
 <tr>
@@ -28,3 +28,5 @@
   <td><%= @total_price %></td>
 </tr>
 </table>
+<%= link_to "Edit Order", edit_order_path(params[:id]), :class => "btn btn-sm btn-primary" %>
+<%= link_to "Delete Order", order_path(params[:id]), :method => :delete, :class => "btn btn-sm btn-danger", 'title' => "Delete Order", 'data-confirm' => "Are you sure you want to delete this order?" %>

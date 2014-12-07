@@ -9,16 +9,19 @@
   <th>Item Description</th>
   <th>Unit Price</th>
   <th>Quanitity</th>
+  <th>Notes</th>
 </tr>
 <% @items.each do |item| %>
   <tr>
   <td><%= get_item_name(item.item_id) %></td>
   <td><%= get_item_description(item.item_id) %></td>
   <td><%= get_item_price(item.item_id) %></td>
-  <td><%= number_field_tag "order[#{item.item_id}]", item['quantity'], :min => 0 %></td>
+  <td><%= number_field_tag "order[#{item.item_id}][quantity]", item['quantity'], :min => 0 %></td>
+  <td><%= text_field_tag "order[#{item.item_id}][notes]", item['notes'] %></td>
   </tr>
 <% end %>
 <tr>
+  <td/>
   <td/>
   <td/>
   <td/>

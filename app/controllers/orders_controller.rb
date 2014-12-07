@@ -32,22 +32,23 @@ class OrdersController < ApplicationController
       order = Order.new(user_id: current_user.id, event_id: params[:event_id])
       order.save
       new_order_items = params[:order]
+      p new_order_items
       new_order_items.each do |new_item|
-        next if new_item[1].to_i == 0
-        new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1].to_i)
+        next if new_item[1]['quantity'].to_i == 0
+        new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1]['quantity'].to_i, notes: new_item[1]['notes'])
         new_item.save
       end
     else
       new_order_items = params[:order]
       new_order_items.each do |new_item|
-        next if new_item[1].to_i == 0
+        next if new_item[1]['quantity'].to_i == 0
         item = Orderitem.where(order_id: order.id, item_id: new_item[0])
         p item
         if item.empty?
-          new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1].to_i)
+          new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1]['quantity'].to_i, notes: new_item[1]['notes'])
           new_item.save
         else
-          item.first.update_attribute(:quantity, new_item[1].to_i + item.first.quantity)
+          item.first.update_attribute(:quantity, new_item[1]['quantity'].to_i + item.first.quantity)
         end
       end
     end
@@ -64,13 +65,12 @@ class OrdersController < ApplicationController
   def update
     new_order_items = params[:order]
     new_order_items.each do |new_item|
-      if new_item[1].to_i == 0
+      if new_item[1]['quantity'].to_i == 0
         Orderitem.where(order_id: params[:id], item_id: new_item[0]).destroy_all
         next
       end
       item = Orderitem.where(order_id: params[:id], item_id: new_item[0])
-      p item
-      item.first.update_attribute(:quantity, new_item[1].to_i)
+      item.first.update_attributes!(:quantity => new_item[1]['quantity'].to_i, :notes => new_item[1]['notes'])
     end
     if Orderitem.where(order_id: params[:id]).empty?
       Order.find(params[:id]).destroy

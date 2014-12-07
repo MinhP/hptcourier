@@ -1,6 +1,6 @@
 <h3>Add Item</h3>
-<table class="table">
 <%= form_for @item, :url => {action: "create"} do |f| %>
+<table class="table">
   <tr>
     <td><%= f.label "Item Name" %></td>
     <td><%= f.text_field :name, :required => true%></td>

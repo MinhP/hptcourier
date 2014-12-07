@@ -9,23 +9,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    Order.find(params[:id])
-    @orderitems = Orderitem.where(order_id: params[:id])
-    @total_price = 0
-    @items = []
-    @orderitems.each do |orderitem|
-      item_hash = orderitem.serializable_hash
-      item_hash.merge!(Item.find(orderitem.item_id).serializable_hash)
-      total_price = item_hash['price'] * item_hash['quantity']
-      @total_price = @total_price + total_price
-      item_hash.merge!('total_price' => total_price)
-      @items << item_hash
-    end
-    @event = Event.find(@items.first['event_id'])
+    @order = Order.find(params[:id])
     @name = get_user_name(Order.find(params[:id]).user_id)
   end
 
   def create
+    empty_order = true
     # Find person's order for event
     order = Order.where(event_id: params[:event_id], user_id: current_user.id).first
     if order.nil?
@@ -35,6 +24,7 @@ class OrdersController < ApplicationController
       p new_order_items
       new_order_items.each do |new_item|
         next if new_item[1]['quantity'].to_i == 0
+        empty_order = false
         new_item = Orderitem.new(order_id: order.id, item_id: new_item[0], quantity: new_item[1]['quantity'].to_i, notes: new_item[1]['notes'])
         new_item.save
       end
@@ -42,6 +32,7 @@ class OrdersController < ApplicationController
       new_order_items = params[:order]
       new_order_items.each do |new_item|
         next if new_item[1]['quantity'].to_i == 0
+        empty_order = false
         item = Orderitem.where(order_id: order.id, item_id: new_item[0])
         p item
         if item.empty?
@@ -52,7 +43,11 @@ class OrdersController < ApplicationController
         end
       end
     end
-    redirect_to order_path(order.id)
+    if empty_order
+      redirect_to root_path
+    else
+      redirect_to order_path(order.id)
+    end
   end
 
   def edit
@@ -73,6 +68,7 @@ class OrdersController < ApplicationController
       item.first.update_attributes!(:quantity => new_item[1]['quantity'].to_i, :notes => new_item[1]['notes'])
     end
     if Orderitem.where(order_id: params[:id]).empty?
+      puts "destroying order"
       Order.find(params[:id]).destroy
       redirect_to order_list_user_path(current_user.id)
     else
@@ -86,5 +82,4 @@ class OrdersController < ApplicationController
 
     redirect_to order_list_user_path(current_user.id)
   end
-  
 end

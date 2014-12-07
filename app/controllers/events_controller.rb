@@ -4,10 +4,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @order_status = false
     @event = Event.find(params[:id])
     @items = Item.where(event_id: params[:id])
-    @order_status = true if Order.where(event_id: params[:id], user_id: 1)
     @order = Order.new
   end
 
@@ -29,4 +27,42 @@ class EventsController < ApplicationController
     redirect_to :controller => :events, :action => :index
   end
 
+  def edit
+    @event = Event.find(params[:id])
+    @items = Item.where(event_id: params[:id])
+  end
+
+  def update
+    p params[:id]
+    event = Event.find(params[:id])
+    event.name = params[:event][:name]
+    event.location = params[:event][:location]
+    event.date = params[:event][:date]
+    event.save
+
+    items = params[:event][:items_attributes]
+    p items
+    items.each do |item|
+      item = item.last
+      # Add Item if doesn't exist
+      if item['id'].nil?
+        Item.new(event_id: params[:id], name: item['name'], description: item['description'], price: item['price']).save
+      else
+        if item['_destroy']
+          Item.find(item['id']).destroy
+          Orderitem.where(item_id: item['id']).destroy_all
+          next
+        else
+          update_item = Item.find(item['id'])
+          update_item.update_attributes(name: item['name'], description: item['description'], price: item['price'])
+        end
+      end
+    end
+    redirect_to event_path(params[:id])
+  end
+
+  def all_orders
+    @event = Event.find(params[:id])
+    @orders = Order.where(event_id: params[:id])
+  end
 end

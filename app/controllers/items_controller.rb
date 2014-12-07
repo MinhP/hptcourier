@@ -17,4 +17,7 @@ class ItemsController < ApplicationController
     end
     redirect_to :controller => :events, :action => :show, :id => params[:id]
   end
+
+  def update
+  end
 end

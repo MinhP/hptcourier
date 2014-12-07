@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require data-confirm-modal
-//= require turbolinks
+//= require nested_form_fields
 //= require_tree .
 
 $(function() {

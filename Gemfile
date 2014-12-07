@@ -12,6 +12,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'nested_form_fields'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 gem 'devise'
 # Use SCSS for stylesheets

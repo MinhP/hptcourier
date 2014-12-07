@@ -4,7 +4,6 @@
 <%= hidden_field_tag :event_id, @event.id %>
 <table class="table">
 <tr>
-  <th></th>
   <th>Item Name</th>
   <th>Item Description</th>
   <th>Price</th>
@@ -13,7 +12,6 @@
 </tr>
 <% @items.each do |item| %>
   <tr>
-    <td>IMAGE HERE</td>
     <td><%= item.name %></td>
     <td><%= item.description %></td>
     <td><%= item.price %></td>
@@ -22,7 +20,6 @@
   </tr>
 <% end %>
   <tr>
-    <td></td>
     <td></td>
     <td></td>
     <td></td>

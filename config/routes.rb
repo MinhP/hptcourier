@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root 'events#index'
   resources :events do
     member do
-      resource :item
+      get :all_orders
     end
   end
   resources :orders

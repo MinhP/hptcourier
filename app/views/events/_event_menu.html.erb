@@ -1,1 +1,3 @@
-<%= link_to "Add Item", new_item_path(@event.id), :class => "btn btn-sm btn-primary" %>
+<%= link_to "Edit Event", edit_event_path(@event.id), :class => "btn btn-sm btn-success" %>
+<%= link_to "View Orders", all_orders_event_path(@event.id), :class => "btn btn-sm btn-primary" %>
+<%= link_to "Event Link", @event.url , :class => "btn btn-sm btn-info" if !@event.url.nil?%>

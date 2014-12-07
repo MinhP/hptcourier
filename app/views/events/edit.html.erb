@@ -1,0 +1,26 @@
+<%= form_for @event, :url => {:action => :update, :controller => :events } do |f| %>
+<div class=""><h3>
+[<%= f.text_field :date, :required => true, :class => "datepicker" %>]
+<%= f.text_field :name, :required => true %>
+@
+<%= f.text_field :location, :required => true %></h3></div>
+<%= hidden_field_tag :event_id, @event.id %>
+<table class="table">
+<tr>
+  <th>Delete</th>
+  <th>Item Name</th>
+  <th>Item Description</th>
+  <th>Price</th>
+</tr>
+<%= f.nested_fields_for :items, wrapper_tag: :tr do |item_form| %>
+  <%= render "items_edit", :item_form => item_form %>
+<% end %>
+  <tr>
+    <td><%= f.add_nested_fields_link :items, "Add Item", :class => "btn btn-sm btn-primary" %></td>
+    <td></td>
+    <td></td>
+    <td><%= f.submit "Confirm Edit", :class => "btn btn-sm btn-primary pull-right", 'title' => "Modify Event", 'data-confirm' => "Please confirm all edits. Any removal of items will be reflected in all orders. Confirm?"%></td>
+  </tr>
+</table>
+
+<% end %>

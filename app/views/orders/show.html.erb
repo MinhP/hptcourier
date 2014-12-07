@@ -1,35 +1,14 @@
 <h3>Order: <%= params[:id] %></h3>
 <ul>
 <li><%= @name %></li>
-<li><%= link_to @event.name, event_path(@event.id) %></li>
+<li><%= link_to @order.event.name, event_path(@order.event.id) %></li>
 </ul>
 <table class="table table-striped">
-<tr>
-  <th>Item Name</th>
-  <th>Item Description</th>
-  <th>Notes</th>
-  <th>Unit Price</th>
-  <th>Quanitity</th>
-  <th>Total Price</th>
-</tr>
-<% @items.each do |item| %>
-<tr>
-<td><%= item['name'] %></td>
-<td><%= item['description'] %></td>
-<td><%= item['notes'] %></td>
-<td><%= item['price'] %></td>
-<td><%= item['quantity'] %></td>
-<td><%= item['total_price'] %></td>
-</tr>
+<%= render "item_header" %>
+<% @order.orderitems.each do |orderitem| %>
+<%= render "item", :orderitem => orderitem %>
 <% end %>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td>Total</td>
-  <td><%= @total_price %></td>
-</tr>
+<%= render "order_total", :order_id => @order.id %>
 </table>
 <%= link_to "Edit Order", edit_order_path(params[:id]), :class => "btn btn-sm btn-primary" %>
 <%= link_to "Delete Order", order_path(params[:id]), :method => :delete, :class => "btn btn-sm btn-danger", 'title' => "Delete Order", 'data-confirm' => "Are you sure you want to delete this order?" %>

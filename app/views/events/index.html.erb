@@ -11,7 +11,10 @@
   <td><%= event.date.to_date %></td>
   <td><%= link_to event.name, :action => :show, :id => event.id %></td>
   <td><%= event.location %></td>
-  <td>(Going/Not Going Button)</td>
+  <td>
+    <%= link_to "View Event", event_path(event.id), :class => "btn btn-sm btn-primary" %>
+    <%= link_to "View Orders", all_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
+  </td>
 </tr>
 <% end %>
 </table>

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
   end
   resources :orders
+  resources :orderitems
   resources :users do
     member do
       get :order_list

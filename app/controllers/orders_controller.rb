@@ -58,6 +58,13 @@ class OrdersController < ApplicationController
   end
 
   def update
+    if !params[:courier_id].nil?
+      Order.find(params[:id]).update_attribute(:courier_id, params[:courier_id])
+
+      redirect_to order_path(params[:id])
+      return
+    end
+
     new_order_items = params[:order]
     new_order_items.each do |new_item|
       if new_item[1]['quantity'].to_i == 0

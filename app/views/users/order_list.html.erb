@@ -15,3 +15,22 @@
 </tr>
 <% end %>
 </table>
+<% if not @orders_courier.empty? %>
+<h3>Orders owned by <%= @name %></h3>
+<table class="table">
+<tr>
+  <th>Order Number</th>
+  <th>Event Name</th>
+  <th>Total Price</th>
+  <th></th>
+</tr>
+<% @orders_courier.each do |order| %>
+<tr>
+  <td><%= order.id %></td>
+  <td><%= link_to get_event_name(order.event_id), event_path(order.event_id) %></td>
+  <td><%= get_order_total(order['id']) %></td>
+  <td><%= link_to "View Order", order_path(order['id']), :class => "btn-sm btn-primary" %></td>
+</tr>
+<% end %>
+</table>
+<% end %>

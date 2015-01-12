@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def order_list
     @orders = Order.where(user_id: params[:id])
+    @orders_courier = Order.where(courier_id: params[:id])
     @name = get_user_name(params[:id])
   end
 end

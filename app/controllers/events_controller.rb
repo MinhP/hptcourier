@@ -64,5 +64,13 @@ class EventsController < ApplicationController
   def all_orders
     @event = Event.find(params[:id])
     @orders = Order.where(event_id: params[:id])
+    # TODO All order list
+    # @order_item_list = []
+    
+    # event_items = Item.where(event_id: params[:id])
+    # event_items.each do |item|
+    #   @order_item_list << Orderitem.where(item_id: item.id).sum(:quantity)
+    # end
+
   end
 end

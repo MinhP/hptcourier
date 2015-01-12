@@ -7,7 +7,7 @@
   <th>Price</th>
   <th></th>
 </tr>
-<% @orders.each do |order| %>
+<% @orders.reverse.each do |order| %>
 <tr>
   <td><%= order.id %></td>
   <td><%= link_to get_user_name(order.user_id), order_list_user_path(order.user_id) %></td>

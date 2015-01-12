@@ -2,6 +2,9 @@
 
 <% @orders.each do |order| %>
   <table class="table table-striped">
+    <tr>
+      <h3><%= get_user_name(order.user_id) %></h3>
+    </tr>
     <%= render "orders/item_header" %>
     <% order.orderitems.each do |orderitem| %>
       <%= render "orders/item", :orderitem => orderitem %>

@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
     if !params[:courier_id].nil?
       Order.find(params[:id]).update_attribute(:courier_id, params[:courier_id])
 
-      redirect_to order_path(params[:id])
+      redirect_to :back
       return
     end
 

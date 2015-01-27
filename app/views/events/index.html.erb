@@ -7,7 +7,13 @@
   <th></th>
 </tr>
 <% @events.each do |event| %>
+<% if event.date - Time.now < 1.week %>
+<tr class="warning">
+<% elsif event.date - Time.now < 0 %>
+<tr class="critical">
+<% else %>
 <tr>
+<% end %>
   <td><%= event.date.to_date %></td>
   <td><%= link_to event.name, :action => :show, :id => event.id %></td>
   <td><%= event.location %></td>

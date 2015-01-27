@@ -9,7 +9,7 @@
     <% if order.isdelivered %>
     <%= link_to "Delivered", order_path(order.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" %>
     <% else %>
-    <%= link_to "Deliver", order_path(order.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" %>
+    <%= link_to "Mark as Delivered", order_path(order.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" %>
     <% end %>
   </td>
 </tr>

@@ -9,8 +9,6 @@
 <% @events.each do |event| %>
 <% if event.date - Time.now < 0 %>
 <tr class="warning">
-<% elsif event.date - Time.now < 1.week %>
-<tr class="success">
 <% else %>
 <tr>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112202444) do
+ActiveRecord::Schema.define(version: 20150127023748) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150112202444) do
     t.integer "buyer_id"
     t.integer "holder_id"
     t.integer "courier_id"
+    t.boolean "isdelivered", default: false, null: false
   end
 
   create_table "trips", force: true do |t|

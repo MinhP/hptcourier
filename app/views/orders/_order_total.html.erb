@@ -5,5 +5,11 @@
   <td></td>
   <td>Total</td>
   <td><%= get_order_total(order_id) %></td>
-  <td></td>
+  <td>
+    <% if order.isdelivered %>
+    <%= link_to "Delivered", order_path(order.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" %>
+    <% else %>
+    <%= link_to "Deliver", order_path(order.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" %>
+    <% end %>
+  </td>
 </tr>

@@ -65,6 +65,12 @@ class OrdersController < ApplicationController
       return
     end
 
+    if !params[:toggle].nil?
+      Order.find(params[:id]).update_attribute(:isdelivered, params[:toggle])
+      redirect_to(:back)
+      return
+    end
+
     new_order_items = params[:order]
     new_order_items.each do |new_item|
       if new_item[1]['quantity'].to_i == 0

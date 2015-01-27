@@ -9,7 +9,7 @@
 <% @order.orderitems.each do |orderitem| %>
 <%= render "item", :orderitem => orderitem %>
 <% end %>
-<%= render "order_total", :order_id => @order.id %>
+<%= render "order_total", :order_id => @order.id, :order => @order %>
 </table>
 <%= link_to "Take Courier Ownership", order_path(params[:id], :courier_id => current_user.id), :method => :put, :class => "btn btn-sm btn-primary" %>
 <%= link_to "Edit Order", edit_order_path(params[:id]), :class => "btn btn-sm btn-primary" if current_user.id == @order.user_id %>

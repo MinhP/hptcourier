@@ -13,6 +13,6 @@
     <% order.orderitems.each do |orderitem| %>
       <%= render "orders/item", :orderitem => orderitem %>
     <% end %>
-    <%= render "orders/order_total", :order_id => order.id %>
+    <%= render "orders/order_total", :order_id => order.id, :order => order %>
   </table>
 <% end %>

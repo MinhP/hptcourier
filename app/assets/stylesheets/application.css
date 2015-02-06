@@ -16,3 +16,5 @@
  */
 
 input { -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+.agg-main-item { font-weight: bold; }
+.agg-item { color: #888888; }

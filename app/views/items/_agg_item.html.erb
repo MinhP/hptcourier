@@ -1,9 +1,9 @@
 <tr class="active agg-main-item">
-  <td><%= item.name %></td>
-  <td><%= item.description %></td>
-  <td></td>
-  <td><%= item.price %></td>
-  <td><%= quantity %></td>
-  <td><%= quantity * item.price %></td>
-  <td></td>
+  <td data-title="Item Name"><%= item.name %></td>
+  <td data-title="Description"><%= item.description %>&nbsp</td>
+  <td class="hidden-xs"></td>
+  <td data-title="Price"><%= item.price %></td>
+  <td data-title="Quantity"><%= quantity %></td>
+  <td data-title="Total"><%= quantity * item.price %></td>
+  <td class="hidden-xs"></td>
 </tr>

@@ -1,13 +1,15 @@
 <div class=""><h3>Purchase list for [<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
 <%= render "order_menu" %>
-<table class="table">
-  <%= render "orders/item_header" %>
-<% @event.items.each do |item| %>
-  <% if item.orderitems.sum(:quantity) > 0 %>
-    <%= render "items/agg_item", :item => item, :quantity => item.orderitems.sum(:quantity) %>
-    <% item.orderitems.each do |orderitem| %>
-      <%= render "orders/agg_item", :orderitem => orderitem %>
+<div id="no-more-tables">
+  <table class="table">
+    <%= render "orders/item_header" %>
+  <% @event.items.each do |item| %>
+    <% if item.orderitems.sum(:quantity) > 0 %>
+      <%= render "items/agg_item", :item => item, :quantity => item.orderitems.sum(:quantity) %>
+      <% item.orderitems.each do |orderitem| %>
+        <%= render "orders/agg_item", :orderitem => orderitem %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-</table>
+  </table>
+</div>

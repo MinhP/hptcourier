@@ -1,11 +1,11 @@
 <tr class="agg-item">
-  <td></td>
-  <td><%= link_to get_user_name(orderitem.order.user_id), order_path(orderitem.order.id) %></td>
-  <td><%= orderitem.notes %></td>
-  <td></td>
-  <td><%= orderitem.quantity %></td>
-  <td></td>
-  <td>
+  <td class="hidden-xs"></td>
+  <td data-title="Name"><%= link_to get_user_name(orderitem.order.user_id), order_path(orderitem.order.id) %></td>
+  <td data-title="Notes"><%= orderitem.notes %>&nbsp</td>
+  <td class="hidden-xs"></td>
+  <td data-title="Quantity"><%= orderitem.quantity %></td>
+  <td class="hidden-xs"></td>
+  <td data-title="Purchased">
     <% if orderitem.ispurchased %>
     <%= link_to orderitem_path(orderitem.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" do %><span class="glyphicon glyphicon-ok"/><% end %>
     <% else %>

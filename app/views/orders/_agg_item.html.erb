@@ -1,6 +1,6 @@
 <tr class="agg-item">
   <td></td>
-  <td><%= get_user_name(orderitem.order.user_id) %></td>
+  <td><%= link_to get_user_name(orderitem.order.user_id), order_path(orderitem.order.id) %></td>
   <td><%= orderitem.notes %></td>
   <td></td>
   <td><%= orderitem.quantity %></td>

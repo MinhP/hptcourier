@@ -8,7 +8,7 @@
 </tr>
 <% @events.each do |event| %>
 <% if event.date - Time.now < 0 %>
-<tr class="warning">
+<tr class="active">
 <% else %>
 <tr>
 <% end %>

@@ -19,11 +19,11 @@ input { -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
 .agg-main-item { font-weight: bold; }
 .agg-item { color: #888888; }
 
-table tr td:last-child {
+table th tr td:last-child {
     white-space: nowrap;
     width: 1px;
 }
 
-table tr td:last-child {
+table th tr td:last-child {
     text-align: right;
 }

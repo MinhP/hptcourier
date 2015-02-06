@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :events do
     member do
       get :all_orders
+      get :agg_orders
     end
   end
   resources :orders

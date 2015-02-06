@@ -1,0 +1,15 @@
+<tr>
+  <td></td>
+  <td><%= get_user_name(orderitem.order.user_id) %></td>
+  <td><%= orderitem.notes %></td>
+  <td></td>
+  <td><%= orderitem.quantity %></td>
+  <td></td>
+  <td>
+    <% if orderitem.ispurchased %>
+    <%= link_to "Purchased", orderitem_path(orderitem.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" %>
+    <% else %>
+    <%= link_to "Mark as Purchased", orderitem_path(orderitem.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" %>
+    <% end %>
+  </td>
+</tr>

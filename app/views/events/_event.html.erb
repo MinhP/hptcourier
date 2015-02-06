@@ -1,0 +1,14 @@
+<% if event.date - Time.now < 0 %>
+<tr class="active">
+<% else %>
+<tr>
+<% end %>
+  <td data-title="Date"><%= event.date.to_date %></td>
+  <td data-title="Name"><%= link_to event.name, :action => :show, :id => event.id %></td>
+  <td data-title="Location"><%= event.location %></td>
+  <td data-title="Actions">
+    <%= link_to "View Event", event_path(event.id), :class => "btn btn-sm btn-primary" %>
+    <%= link_to "Orders", all_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
+    <%= link_to "Purchase List", agg_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
+  </td>
+</tr>

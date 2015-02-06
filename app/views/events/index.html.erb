@@ -1,25 +1,14 @@
 <h3>Events</h3>
-<table class="table">
-<tr>
-  <th>Date</th>
-  <th>Event Name</th>
-  <th>Event Location</th>
-  <th></th>
-</tr>
-<% @events.each do |event| %>
-<% if event.date - Time.now < 0 %>
-<tr class="active">
-<% else %>
-<tr>
-<% end %>
-  <td><%= event.date.to_date %></td>
-  <td><%= link_to event.name, :action => :show, :id => event.id %></td>
-  <td><%= event.location %></td>
-  <td>
-    <%= link_to "View Event", event_path(event.id), :class => "btn btn-sm btn-primary" %>
-    <%= link_to "View Orders", all_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
-    <%= link_to "View Purchase List", agg_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
-  </td>
-</tr>
-<% end %>
-</table>
+<div id="no-more-tables">
+  <table class="table">
+  <thead>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Location</th>
+    <th></th>
+  </thead>
+  <% @events.each do |event| %>
+    <%= render event, :event => event %>
+  <% end %>
+  </table>
+</div>

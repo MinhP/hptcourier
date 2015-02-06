@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap/dist/js/bootstrap
 //= require jquery-ui
-//= require twitter/bootstrap
+
 //= require data-confirm-modal
 //= require nested_form_fields
 //= require_tree .

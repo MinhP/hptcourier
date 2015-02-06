@@ -16,7 +16,7 @@
   <%= render "items_edit", :item_form => item_form %>
 <% end %>
   <tr>
-    <td><%= f.add_nested_fields_link :items, "Add Item", :class => "btn btn-sm btn-primary" %></td>
+    <td><%= f.add_nested_fields_link :items, "", :class => "btn btn-sm btn-primary glyphicon glyphicon-plus" %></td>
     <td></td>
     <td></td>
     <td><%= f.submit "Confirm Edit", :class => "btn btn-sm btn-primary pull-right", 'title' => "Modify Event", 'data-confirm' => "Please confirm all edits. Any removal of items will be reflected in all orders. Confirm?"%></td>

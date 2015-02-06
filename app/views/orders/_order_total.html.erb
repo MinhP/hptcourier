@@ -7,9 +7,9 @@
   <td><%= get_order_total(order_id) %></td>
   <td>
     <% if order.isdelivered %>
-    <%= link_to "Delivered", order_path(order.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" %>
+    <%= link_to order_path(order.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" do %><span class="glyphicon glyphicon-plane"> Delivered</span><% end %>
     <% else %>
-    <%= link_to "Mark as Delivered", order_path(order.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" %>
+    <%= link_to order_path(order.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" do %><span class="glyphicon glyphicon-plane"> Not Delivered</span><% end %>
     <% end %>
   </td>
 </tr>

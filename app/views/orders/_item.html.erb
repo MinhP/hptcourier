@@ -7,9 +7,9 @@
   <td><%= orderitem.quantity * orderitem.item.price %></td>
   <td>
     <% if orderitem.ispurchased %>
-    <%= link_to "Purchased", orderitem_path(orderitem.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" %>
+    <%= link_to orderitem_path(orderitem.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-primary" do %><span class="glyphicon glyphicon-ok"/><% end %>
     <% else %>
-    <%= link_to "Mark as Purchased", orderitem_path(orderitem.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" %>
+    <%= link_to orderitem_path(orderitem.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" do %><span class="glyphicon glyphicon-plus"/><% end %>
     <% end %>
   </td>
 </tr>

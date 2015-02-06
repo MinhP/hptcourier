@@ -1,5 +1,5 @@
 <div class=""><h3>All Orders for [<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
-
+<%= render "event_menu" %>
 <% @orders.each do |order| %>
   <table class="table table-striped">
     <tr>

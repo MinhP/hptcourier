@@ -1,5 +1,5 @@
 <div class=""><h3>Purchase list for [<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
-
+<%= render "event_menu" %>
 <table class="table">
   <%= render "orders/item_header" %>
 <% @event.items.each do |item| %>

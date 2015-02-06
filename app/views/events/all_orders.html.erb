@@ -1,15 +1,5 @@
 <div class=""><h3>All Orders for [<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
 
-<table class="table">
-  <%= render "orders/item_header" %>
-<% @event.items.each do |item| %>
-  <%= render "items/agg_item", :item => item %>
-<% item.orderitems.each do |orderitem| %>
-  <%= render "orders/agg_item", :orderitem => orderitem %>
-<% end %>
-<% end %>
-</table>
-
 <% @orders.each do |order| %>
   <table class="table table-striped">
     <tr>

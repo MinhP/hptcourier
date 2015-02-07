@@ -28,7 +28,7 @@ module OrdersHelper
         :method => :put,
         :remote => true,
         :class => "purchase purchase-true btn btn-sm btn-primary",
-        :id => "purchase_#{orderitem.id}"
+        :id => orderitem.id
       )
     else
       link_to(
@@ -37,7 +37,7 @@ module OrdersHelper
         :method => :put,
         :remote => true,
         :class => "purchase purchase-false btn btn-sm btn-danger",
-        :id => "purchase_#{orderitem.id}"
+        :id => orderitem.id
       )
     end
   end

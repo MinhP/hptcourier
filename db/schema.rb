@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20150127023748) do
   create_table "orders", force: true do |t|
     t.integer "user_id"
     t.integer "event_id"
-    t.integer "buyer_id"
-    t.integer "holder_id"
     t.integer "courier_id"
     t.boolean "isdelivered", default: false, null: false
   end

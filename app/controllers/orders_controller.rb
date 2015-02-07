@@ -67,7 +67,11 @@ class OrdersController < ApplicationController
 
     if !params[:toggle].nil?
       Order.find(params[:id]).update_attribute(:isdelivered, params[:toggle])
-      redirect_to(:back)
+      if request.xhr?
+        head :ok
+      else
+        redirect_to(:back)
+      end
       return
     end
 

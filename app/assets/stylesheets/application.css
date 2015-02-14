@@ -15,6 +15,40 @@
  *= require jquery-ui
  */
 
+ .maincontainer {
+  //border-left: 1px solid;
+  //border-right: 1px solid;
+  border-color: #ccc;
+  padding: 0px;
+  //border-radius: 10px;
+ }
+
+.btn-primary {
+  background-color: #01a9d7;
+  border-color: #01a9d7;
+}
+
+.something-green {
+  color: #9ac409;
+}
+
+.something-red {
+  color: #e2000d;
+}
+
+.title {
+  border-bottom: 1px solid;
+  border-color: #ccc;
+}
+a {
+  color: #555;
+}
+
+a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+
 input { -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 .agg-main-item { font-weight: bold; }
 .agg-item { color: #888888; }

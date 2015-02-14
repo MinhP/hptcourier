@@ -1,9 +1,24 @@
-<tr class="active agg-main-item">
-  <td data-title="Item Name"><%= item.name %></td>
-  <td data-title="Description"><%= item.description %>&nbsp</td>
-  <td class="hidden-xs"></td>
-  <td data-title="Price"><%= item.price %></td>
-  <td data-title="Quantity"><%= quantity %></td>
-  <td data-title="Total"><%= quantity * item.price %></td>
-  <td class="hidden-xs"></td>
-</tr>
+<div class="item">
+  <div class="item-info row">
+    <div class="item-name col-sm-6">
+      <p><%= item.name %></p>
+    </div>
+    <div class="item-price col-sm-2">
+      <p class="label-item">Price</p>
+      <p><%= item.price %></p>
+    </div>
+    <div class="item-quantity col-sm-2">
+      <p class="label-item">Qty</p>
+      <p><%= quantity %></p>
+    </div>
+    <div class="item-total col-sm-2">
+      <p class="label-item">Total</p>
+      <p><%= quantity * item.price %></p>
+    </div>
+  </div>
+  <div class="item-order row">
+    <% item.orderitems.each do |orderitem| %>
+      <%= render "orders/agg_item", :orderitem => orderitem %>
+    <% end %>
+  </div>
+</div>

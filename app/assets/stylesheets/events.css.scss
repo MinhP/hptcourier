@@ -1,3 +1,33 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.event {
+  padding: 5px;
+  border-bottom: 1px solid;
+  border-color: #ccc;
+  overflow: hidden;
+}
+
+.event-menu {
+  float: right;
+}
+
+.label-date {
+  font-size: 14pt;
+  color: white;
+  background-color: #dd5e9a;
+  border-radius: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.label-date.old {
+  background-color: #dddddd;
+}
+
+.label-name {
+  font-size: 18pt;
+}

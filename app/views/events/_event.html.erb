@@ -1,16 +1,16 @@
-<% if event.date - Time.now < 0 %>
-<tr class="active">
-<% else %>
-<tr>
-<% end %>
-  <td data-title="Date"><%= event.date.to_date %></td>
-  <td data-title="Name"><%= link_to event.name, :action => :show, :id => event.id %></td>
-  <td data-title="Location"><%= event.location %></td>
-  <td class="nolabel" data-title="Actions">
-
-      <%= link_to "View Event", event_path(event.id), :class => "btn btn-sm btn-primary" %>
-      <%= link_to "Orders", all_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
-      <%= link_to "Purchase List", agg_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
-
-  </td>
-</tr>
+<div class="event md-col-12">
+  <span class="event-content">
+    <% if event.date - Time.now < 0 %>
+    <span class="label-date old"><%= event.date.to_date %></span>
+    <% else %>
+    <span class="label-date"><%= event.date.to_date %></span>
+    <% end %>
+    <span class="label-name"><%= link_to event.name, :action => :show, :id => event.id %></span>
+    <span class="event-location">@ <%= event.location %></span>
+  </span>
+  <span class="event-menu">
+    <%= link_to content_tag(:span, nil, :class => "glyphicon glyphicon-eye-open"), event_path(event.id), :class => "btn btn-sm btn-primary" %>
+    <%= link_to content_tag(:span, nil, :class => "glyphicon glyphicon-align-justify"), all_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
+    <%= link_to content_tag(:span, nil, :class => "glyphicon glyphicon-credit-card"), agg_orders_event_path(event.id), :class => "btn btn-sm btn-primary" %>
+  </span>
+</div>

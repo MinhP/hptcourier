@@ -1,8 +1,8 @@
 <div class="item-order row">
+  <div class="col-xs-2">
+    <%= toggle_purchase_button orderitem %>
+  </div>  
   <div class="col-sm-2"><%= link_to get_user_name(orderitem.order.user_id), order_path(orderitem.order.id) %></div>
   <div class="col-xs-2">x <%= orderitem.quantity %></div>
   <div class="col-xs-6"><%= orderitem.notes %></div>
-  <div class="col-xs-2">
-    <%= toggle_purchase_button orderitem %>
-  </div>
 </div>

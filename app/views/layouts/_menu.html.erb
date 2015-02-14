@@ -1,22 +1,32 @@
-<%= nav_bar :brand => "HPT Courier Services", :responsive => true do %>
-  <%= menu_group do %>
-    <%= drop_down "Events" do %>
-      <%= menu_item "List Events", events_path %>
-      <%= menu_item "Add Events", new_event_path if user_signed_in? %>
-    <% end %>
-    <%= drop_down "Orders" do %>
-      <%= menu_item("My Orders", order_list_user_path(current_user.id)) if user_signed_in? %>
-      <%= menu_item "All Orders", orders_path %>
-    <% end %>
-    <%= menu_item "Users", users_path %>
-  <% end %>
-  <%= menu_group :pull => :right do %>
-    <% if not user_signed_in? %>
-      <%= menu_item "Sign In", new_user_session_path %>
-      <%= menu_item "Register", new_user_registration_path %>
-    <% else %>
-      <%= menu_item current_user.name, edit_user_registration_path %>
-      <%= menu_item "Sign Out", destroy_user_session_path, :method => :delete %>
-    <% end %>
-  <% end %>
-<% end %>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">HPT Courier Services</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav ">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Events <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "List Events", events_path %></li>
+          <li><%= link_to "Add Events", new_event_path if user_signed_in? %></li>
+        </ul>
+      </li>    
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Orders <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "My Orders", order_list_user_path(current_user.id) if user_signed_in? %></li>
+          <li><%= link_to "All Orders", orders_path %></li>
+        </ul>
+      </li>    
+      <li><a href="/users">Users</a></li>
+    </ul>  
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to current_user.name,  edit_user_registration_path %></a></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+    </ul>
+  </div>
+</nav>

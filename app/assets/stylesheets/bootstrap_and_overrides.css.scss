@@ -2,6 +2,8 @@
  Bootstrap
  This line imports bootstrap, modified to use glyphicons from Cloudflare CDN.
 */
+
+$screen-sm: 720px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

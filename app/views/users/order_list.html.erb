@@ -10,7 +10,7 @@
 <tr>
   <td><%= order.id %></td>
   <td><%= link_to get_event_name(order.event_id), event_path(order.event_id) %></td>
-  <td><%= get_order_total(order['id']) %></td>
+  <td><%= format_price(order.event_id, get_order_total(order['id'])) %></td>
   <td><%= link_to "View Order", order_path(order['id']), :class => "btn-sm btn-primary" %></td>
 </tr>
 <% end %>
@@ -30,7 +30,7 @@
   <td><%= order.id %></td>
   <td><%= link_to get_user_name(order.user_id), order_list_user_path(order.user_id) %></td>
   <td><%= link_to get_event_name(order.event_id), event_path(order.event_id) %></td>
-  <td><%= get_order_total(order['id']) %></td>
+  <td><%= format_price(order.event_id, get_order_total(order['id'])) %></td>
   <td><%= link_to "View Order", order_path(order['id']), :class => "btn-sm btn-primary" %></td>
 </tr>
 <% end %>

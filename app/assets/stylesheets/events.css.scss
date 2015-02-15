@@ -45,3 +45,21 @@
   width: 130px;
   text-align: right;
 }
+
+.form-inline tbody td > input.form-control{
+  width: 100%;
+}
+
+//formatting to make edit table not look so dumb on wide screens
+@media all and (min-width: 1170px) {
+  .col-delete {
+    width: 20px;
+  }
+  .col-name {
+    width: 400px;
+  }
+  .col-description {
+    
+  }
+  
+}

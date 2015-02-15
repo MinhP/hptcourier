@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150215181209) do
     t.decimal "price"
     t.integer "event_id"
     t.string  "image_url"
-    t.string  "currency",    default: "JPY", null: false
   end
 
   create_table "orderitems", force: true do |t|

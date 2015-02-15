@@ -26,6 +26,11 @@
   </tbody>
 </table>
 <div style="text-align:right">
-  <%= f.submit "Add to Order", :class => "btn btn-sm btn-primary" %>
+  <%= f.submit "Add to Order", :class => "btn btn-sm btn-primary", :disabled => @items.empty? %>
+</div>
+<hr/>
+<div>
+  <h3>Attendees</h3>
+  <button class="btn btn-primary">I'm going</button>
 </div>
 <% end %>

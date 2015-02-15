@@ -4,7 +4,7 @@
   <td></td>
   <td></td>
   <td>Total</td>
-  <td><%= get_order_total(order_id) %></td>
+  <td><%= format_price(order.event_id, get_order_total(order['id'])) %></td>
   <td>
     <% if order.isdelivered %>
     <%= link_to order_path(order.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-success" do %><span class="glyphicon glyphicon-plane"></span><% end %>

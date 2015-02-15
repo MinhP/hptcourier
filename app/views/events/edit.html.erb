@@ -1,16 +1,15 @@
 <%= form_for @event, :url => {:action => :update, :controller => :events }, :html => {:class => 'form-inline'} do |f| %>
 <div><h3>
-[<%= f.text_field :date, :value => @event.date.strftime("%Y-%m-%d"), :required => true, :class => "datepicker form-control" %>]
+<%= f.text_field :date, :value => @event.date.strftime("%Y-%m-%d"), :required => true, :class => "datepicker form-control" %>
 <%= f.text_field :name, :required => true, :class => "form-control" %>
-@
-<%= f.text_field :location, :required => true, :class => "form-control" %></h3></div>
+<span class="form-group">@ <%= f.text_field :location, :required => true, :class => "form-control" %></span></h3></div>
 <%= hidden_field_tag :event_id, @event.id %>
 <table class="table">
 <thead>
 <tr>
-  <th>Delete</th>
-  <th>Item Name</th>
-  <th>Item Description</th>
+  <th class="col-delete">Delete</th>
+  <th class="col-name">Item Name</th>
+  <th class="col-description">Item Description</th>
   <th class="col-price">Price <%= f.select(:currency, @currencies, {}, {:class => 'form-control'}) %></th>
 </tr>
 </thead>

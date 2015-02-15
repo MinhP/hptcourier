@@ -6,12 +6,14 @@ class Event < ActiveRecord::Base
   
   def cur_prefix
     case self.currency
-    when "USD"
-      "$"
     when "JPY"
-      "¥"
+      '¥'
+    when "GBP"
+      '£'
+    when "EUR"
+      '€'
     else
-      ""
+      '$'
     end
   end
     

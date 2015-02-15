@@ -29,7 +29,7 @@
         <li><%= link_to current_user.name,  edit_user_registration_path %></a></li>
         <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
       <% else %>
-        <li><%= link_to "Sign In",  new_user_registration_path %></a></li>
+        <li><%= link_to "Sign In",  new_user_session_path %></a></li>
       <% end %>
     </ul>
   </div>

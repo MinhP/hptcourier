@@ -1,21 +1,25 @@
 <h3>Add New Event</h3>
-<%= form_for @event, :url => {action: "create"} do |f| %>
+<%= form_for @event, :url => {action: "create"}, :html => {:class => 'form-inline'} do |f| %>
 <table class="table">
   <tr>
-    <td><%= f.label "Event Name" %></td>
-    <td><%= f.text_field :name, :required => true %></td>
+    <td><%= f.label "Event Name"%></td>
+    <td><%= f.text_field :name, :class => 'form-control', :required => true %></td>
   </tr>
   <tr>
     <td><%= f.label "Location" %></td>
-    <td><%= f.text_field :location, :required => true %></td>
+    <td><%= f.text_field :location, :class => 'form-control', :required => true %></td>
   </tr>
   <tr>
     <td><%= f.label "Date" %></td>
-    <td><%= f.text_field :date, :required => true, :class => 'datepicker' %></td>
+    <td><%= f.text_field :date, :class => 'form-control', :required => true, :class => 'datepicker form-control' %></td>
   </tr>
   <tr>
     <td><%= f.label "URL" %></td>
-    <td><%= f.text_field :url %></td>
+    <td><%= f.text_field :url, :class => 'form-control' %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Currency" %></td>
+    <td><%= f.select(:currency, @currencies, {}, {:class => 'form-control'}) %></td>
   </tr>
 </table>
   <%= f.submit "Add Event", :class => "btn btn-sm btn-primary" %>

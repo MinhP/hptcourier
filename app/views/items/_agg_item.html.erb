@@ -5,7 +5,7 @@
     </div>
     <div class="item-price col-sm-2">
       <p class="label-item">Price</p>
-      <p class="item-data"><%= item.price %></p>
+      <p class="item-data"><%= number_to_currency(item.price, unit: @event.cur_prefix, precision: @event.cur_precision ) %></p>
     </div>
     <div class="item-quantity col-sm-2">
       <p class="label-item">Qty</p>
@@ -13,7 +13,7 @@
     </div>
     <div class="item-total col-sm-2">
       <p class="label-item">Total</p>
-      <p class="item-data"><%= quantity * item.price %></p>
+      <p class="item-data"><%= number_to_currency(quantity * item.price, unit: @event.cur_prefix, precision: @event.cur_precision ) %></p>
     </div>
   </div>
   <div class="item-order row">

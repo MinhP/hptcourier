@@ -1,30 +1,31 @@
-<div class=""><h3>[<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
+<h3>[<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3>
+
 <%= render "event_menu" %>
-<%= form_for @order, :url => {:action => :create, :controller => :orders } do |f| %>
+<%= form_for @order, :url => {:action => :create, :controller => :orders }, :html => {:class => 'form-inline'} do |f| %>
 <%= hidden_field_tag :event_id, @event.id %>
-<table class="table">
-<tr>
-  <th>Item Name</th>
-  <th>Item Description</th>
-  <th>Price</th>
-  <th>Quanitity</th>
-  <th>Notes</th>
-</tr>
-<% @items.each do |item| %>
-  <tr>
-    <td><%= item.name %></td>
-    <td><%= item.description %></td>
-    <td><%= item.price %></td>
-    <td><%= number_field_tag "order[#{item.id}][quantity]", 0, :min => 0 %></td>
-    <td><%= text_field_tag "order[#{item.id}][notes]" %></td>
-  </tr>
-<% end %>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><%= f.submit "Add to Order", :class => "btn btn-sm btn-primary pull-right" %></td>
-  </tr>
+<table class="table table-striped no-more-tables">
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Item Description</th>
+      <th class="col-numeric">Price (<%= @event.currency %>)</th>
+      <th class="col-numeric">Quantity</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.description %></td>
+      <td class="col-numeric"><%= number_to_currency(item.price, unit: @event.cur_prefix, precision: @event.cur_precision ) %></td>
+      <td class="col-numeric"><%= number_field_tag "order[#{item.id}][quantity]", 0, :min => 0, :class => "form-control" %></td>
+      <td><%= text_field_tag "order[#{item.id}][notes]", nil, class: "form-control" %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
+<div style="text-align:right">
+  <%= f.submit "Add to Order", :class => "btn btn-sm btn-primary" %>
+</div>
 <% end %>

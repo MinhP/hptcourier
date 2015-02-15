@@ -1,5 +1,5 @@
   
     <td><%= item_form.remove_nested_fields_link "", :class => 'btn btn-sm btn-danger glyphicon glyphicon-minus' %></td>
-    <td><%= item_form.text_field :name, :required => true %></td>
-    <td><%= item_form.text_field :description %></td>
-    <td><%= item_form.number_field :price, :required => true %></td>
+    <td><%= item_form.text_field :name, :required => true, class: 'form-control' %></td>
+    <td><%= item_form.text_field :description , class: 'form-control' %></td>
+    <td class="col-numeric col-price"><%= item_form.number_field :price, :required => true , class: 'form-control' %></td>

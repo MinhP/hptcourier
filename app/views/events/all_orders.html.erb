@@ -6,7 +6,14 @@
       <h3><%= get_user_name(order.user_id) %></h3>
       <ul>
         <li>Courier: <%= get_user_name order.courier_id %></li>
-        <li><%= link_to "Assign Self as Handler", order_path(order.id, :courier_id => current_user.id), :method => :put, :class => "btn btn-sm btn-primary" %></li>
+        <li>
+            <% if order.courier_id != current_user.id %>
+                <%= link_to "Assign Self as Handler", order_path(order.id, :courier_id => current_user.id), :method => :put, :class => "btn btn-sm btn-primary" %>
+            <% else %>
+               <%= link_to "Unassign Self as Handler", order_path(order.id, :courier_id => 0), :method => :put, :class => "btn btn-sm btn-primary" %>
+            <% end  %>
+            
+          </li>
       </ul>
     </tr>
     <%= render "orders/item_header" %>

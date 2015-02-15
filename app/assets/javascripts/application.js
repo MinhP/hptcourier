@@ -1,3 +1,4 @@
+/* globals $, document */
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -12,12 +13,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap/dist/js/bootstrap
 //= require jquery-ui
+//= require bootstrap-sprockets
 
 //= require data-confirm-modal
 //= require nested_form_fields
-//= require_tree .
+//= require react
+//= require react_ujs
+//= require components
 
 $(function() {
     $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});

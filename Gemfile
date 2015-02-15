@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
@@ -28,9 +30,14 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem "less-rails"
-gem "railsstrap"
-#gem "twitter-bootstrap-rails"
+gem "bootstrap-sass"
+gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
+
+# handle all frontend package management thru bower
+source 'http://rails-assets.org' do
+    #gem 'rails-assets-react-select'
+    #gem 'rails-assets-money.js'
+end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

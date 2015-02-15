@@ -1,26 +1,32 @@
-<%= form_for @event, :url => {:action => :update, :controller => :events } do |f| %>
-<div class=""><h3>
-[<%= f.text_field :date, :required => true, :class => "datepicker" %>]
-<%= f.text_field :name, :required => true %>
+<%= form_for @event, :url => {:action => :update, :controller => :events }, :html => {:class => 'form-inline'} do |f| %>
+<div><h3>
+[<%= f.text_field :date, :value => @event.date.strftime("%Y-%m-%d"), :required => true, :class => "datepicker form-control" %>]
+<%= f.text_field :name, :required => true, :class => "form-control" %>
 @
-<%= f.text_field :location, :required => true %></h3></div>
+<%= f.text_field :location, :required => true, :class => "form-control" %></h3></div>
 <%= hidden_field_tag :event_id, @event.id %>
 <table class="table">
+<thead>
 <tr>
   <th>Delete</th>
   <th>Item Name</th>
   <th>Item Description</th>
-  <th>Price</th>
+  <th class="col-price">Price <%= f.select(:currency, @currencies, {}, {:class => 'form-control'}) %></th>
 </tr>
+</thead>
+<tbody>
 <%= f.nested_fields_for :items, wrapper_tag: :tr do |item_form| %>
   <%= render "items_edit", :item_form => item_form %>
 <% end %>
+</tbody>
+<tfoot>
   <tr>
     <td><%= f.add_nested_fields_link :items, "", :class => "btn btn-sm btn-primary glyphicon glyphicon-plus" %></td>
     <td></td>
     <td></td>
     <td><%= f.submit "Confirm Edit", :class => "btn btn-sm btn-primary pull-right", 'title' => "Modify Event", 'data-confirm' => "Please confirm all edits. Any removal of items will be reflected in all orders. Confirm?"%></td>
   </tr>
+</tfoot>
 </table>
 
 <% end %>

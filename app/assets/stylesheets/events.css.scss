@@ -31,3 +31,17 @@
 .label-name {
   font-size: 18pt;
 }
+
+//right align numeric columns
+.col-numeric {
+  text-align: right;
+  input.form-control[type="text"], input.form-control[type="number"] {
+    text-align: right;
+    max-width: 100px;
+  }
+}
+
+.col-price {
+  width: 130px;
+  text-align: right;
+}

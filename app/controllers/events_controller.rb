@@ -1,5 +1,13 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
+  
+  # list of supported currencies
+  before_filter :set_currencies
+  
+  def set_currencies
+    @currencies = ['JPY', 'USD', 'CAD', 'SGD', 'GBP', 'EUR', 'HKD']
+  end
+  
   def index
     @events = Event.all.order(date: :desc)
   end
@@ -20,6 +28,7 @@ class EventsController < ApplicationController
     new_event.location = params[:event][:location]
     new_event.date = params[:event][:date]
     new_event.url = params[:event][:url]
+    new_event.currency = params[:event][:currency]
     begin
       new_event.save
     rescue
@@ -31,6 +40,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @items = Item.where(event_id: params[:id])
+    @currencies
   end
 
   def update
@@ -39,6 +49,7 @@ class EventsController < ApplicationController
     event.name = params[:event][:name]
     event.location = params[:event][:location]
     event.date = params[:event][:date]
+    event.currency = params[:event][:currency]
     event.save
 
     items = params[:event][:items_attributes]

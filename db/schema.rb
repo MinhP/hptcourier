@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127023748) do
+ActiveRecord::Schema.define(version: 20150215181209) do
 
   create_table "events", force: true do |t|
     t.string   "name"
     t.datetime "date"
     t.string   "location"
     t.string   "url"
+    t.string   "currency", default: "JPY", null: false
   end
 
   create_table "items", force: true do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150127023748) do
     t.decimal "price"
     t.integer "event_id"
     t.string  "image_url"
+    t.string  "currency",    default: "JPY", null: false
   end
 
   create_table "orderitems", force: true do |t|

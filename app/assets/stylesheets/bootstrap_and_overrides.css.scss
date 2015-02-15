@@ -2,7 +2,18 @@
  Bootstrap
  This line imports bootstrap, modified to use glyphicons from Cloudflare CDN.
 */
+@import "bootstrap-sprockets";
 @import "bootstrap";
+
+.form-control{
+  height: 30px;
+  padding: 3px 6px;
+}
+
+
+.table > thead > tr > th {
+  vertical-align: middle;
+}
 
 /*
  Glyphicons - included by default in bootstrap.
@@ -17,7 +28,7 @@
   FontAwesome is hosted via CDN as well. If you prefer to have them included in the asset
   pipeline, comment this out and see the next section.
 */
-@import 'fontawesome';
+//@import 'fontawesome';
 
 /*
  Font Awesome
@@ -30,7 +41,7 @@
 //@import 'fontawesome-local';
 
 //If you want exotic placement features, animations, and more, import this:
-@import "railsstrap";
+//@import "railsstrap";
 
 /*
  Date and Time Picker (https://github.com/toadkicker/railsstrap/wiki/Date-and-Time-Picker)

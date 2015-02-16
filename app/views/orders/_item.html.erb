@@ -4,7 +4,7 @@
   <td><%= orderitem.notes %></td>
   <td><%= orderitem.item.price %></td>
   <td><%= orderitem.quantity %></td>
-  <td><%= number_to_currency(orderitem.quantity * orderitem.item.price, unit: @order.event.cur_prefix, precision: @order.event.cur_precision ) %></td>
+  <td><%= number_to_currency(orderitem.quantity * orderitem.item.price, unit: orderitem.order.event.cur_prefix, precision: orderitem.order.event.cur_precision ) %></td>
   <td>
     <%= toggle_purchase_button orderitem %>
   </td>

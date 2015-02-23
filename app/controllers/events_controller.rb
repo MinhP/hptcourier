@@ -16,6 +16,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @items = Item.where(event_id: params[:id])
     @order = Order.new
+    @eventers = Eventer.where(event_id: params[:id]).where.not(event_status: "Not Going")
+    @userevent = @eventers.where(user_id: current_user.id).first
+    
   end
 
   def new

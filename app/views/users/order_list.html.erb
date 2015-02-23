@@ -1,4 +1,4 @@
-<h3>Orders for <%= @name %></h3>
+<h3>Orders created by <%= @name %></h3>
 <table class="table">
 <tr>
   <th>Order Number</th>
@@ -16,7 +16,7 @@
 <% end %>
 </table>
 <% if not @orders_courier.empty? %>
-<h3>Orders owned by <%= @name %></h3>
+<h3>Orders couriered by <%= @name %></h3>
 <table class="table">
 <tr>
   <th>Order Number</th>

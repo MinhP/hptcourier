@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215181209) do
+ActiveRecord::Schema.define(version: 20150221170200) do
+
+  create_table "eventers", force: true do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.string  "event_status"
+  end
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -40,8 +46,6 @@ ActiveRecord::Schema.define(version: 20150215181209) do
   create_table "orders", force: true do |t|
     t.integer "user_id"
     t.integer "event_id"
-    t.integer "buyer_id"
-    t.integer "holder_id"
     t.integer "courier_id"
     t.boolean "isdelivered", default: false, null: false
   end

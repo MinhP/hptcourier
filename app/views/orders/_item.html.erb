@@ -1,11 +1,35 @@
-<tr>
-  <td><%= orderitem.item.name %></td>
-  <td><%= orderitem.item.description %></td>
-  <td><%= orderitem.notes %></td>
-  <td><%= orderitem.item.price %></td>
-  <td><%= orderitem.quantity %></td>
-  <td><%= number_to_currency(orderitem.quantity * orderitem.item.price, unit: orderitem.order.event.cur_prefix, precision: orderitem.order.event.cur_precision ) %></td>
-  <td>
+<div class="row order-item">
+  <div class="col-sm-1 hidden-xs">
     <%= toggle_purchase_button orderitem %>
-  </td>
-</tr>
+  </div>
+  <div class="col-sm-11 order-content">
+    <div>
+      <div class="col-sm-2">
+        <p class="label-item visible-xs">Item</p>
+        <p class="order-data-item"><%= orderitem.item.name %></p>
+      </div>
+      <div class="col-sm-3">
+        <p class="label-item visible-xs">Description</p>
+        <p class="data-item"><%= orderitem.item.description %></p>
+      </div>
+      <div class="item-price col-sm-2">
+        <p class="label-item visible-xs">Price</p>
+        <p class="data-item"><%= number_to_currency(orderitem.item.price, unit: orderitem.order.event.cur_prefix, precision: orderitem.order.event.cur_precision ) %></p>
+        </div>
+      <div class="item-quantity col-sm-2">
+        <p class="label-item visible-xs">Quantity</p>
+        <p class="data-item"><%= orderitem.quantity %></p>
+      </div>
+      <div class="item-total col-sm-2">
+        <p class="label-item visible-xs">Total</p>
+        <p class="data-item"><%= number_to_currency(orderitem.quantity * orderitem.item.price, unit: orderitem.order.event.cur_prefix, precision: orderitem.order.event.cur_precision ) %></p>
+      </div>
+    </div>
+    <div class="col-sm-11">
+      <%= orderitem.notes %>
+    </div>
+    <div class="col-xs-12 visible-xs">
+      <%= toggle_purchase_button orderitem %>
+    </div>
+  </div>
+</div>

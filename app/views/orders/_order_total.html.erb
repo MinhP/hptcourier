@@ -1,15 +1,10 @@
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td>Total</td>
-  <td><%= format_price(order.event_id, get_order_total(order['id'])) %></td>
-  <td>
+<div class="order-total col-sm-6">
+  <%= format_price(order.event_id, get_order_total(order['id'])) %>
+</div>
+<div class="col-sm-6">
     <% if order.isdelivered %>
     <%= link_to order_path(order.id, :toggle => "false"), :method => :put, :class => "btn btn-sm btn-success" do %><span class="glyphicon glyphicon-plane"></span><% end %>
     <% else %>
     <%= link_to order_path(order.id, :toggle => "true"), :method => :put, :class => "btn btn-sm btn-danger" do %><span class="glyphicon glyphicon-plane"></span><% end %>
     <% end %>
-  </td>
-</tr>
+</div>

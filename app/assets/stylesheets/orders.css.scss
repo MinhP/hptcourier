@@ -1,3 +1,44 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order {
+  padding: 5px;
+  //border-bottom: 1px solid;
+  border-color: #ccc;
+  //overflow: hidden;  
+}
+
+.order-item {
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  border-color: #ccc;
+  overflow: hidden;
+}
+
+.order-content {
+  padding: 0px;
+}
+
+.order-item.header {
+  padding-bottom: 0px;
+  border-bottom: 0px solid;
+}
+
+.order-name {
+  font-size: 18pt;
+}
+
+.order-courier {
+  font-size: 18pt;
+}
+
+.order-total {
+  font-size: 18pt;
+}
+
+.order-item-name {
+  font-size: 12pt;
+}

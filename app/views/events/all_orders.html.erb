@@ -1,25 +1,48 @@
-<div class=""><h3>All Orders for [<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3></div>
-<%= render "order_menu" %>
+<div class="container-fluid">
+  <div>
+  <h3>All Orders for [<%= @event.date.to_date %>] <%= @event.name %> @ <%= @event.location %></h3>
+  </div>
+<% render "order_menu" %>
 <% @orders.each do |order| %>
-  <table class="table table-striped">
-    <tr>
-      <h3><%= get_user_name(order.user_id) %></h3>
-      <ul>
-        <li>Courier: <%= get_user_name order.courier_id %></li>
-        <li>
-            <% if order.courier_id != current_user.id %>
-                <%= link_to "Assign Self as Handler", order_path(order.id, :courier_id => current_user.id), :method => :put, :class => "btn btn-sm btn-primary" %>
-            <% else %>
-               <%= link_to "Unassign Self as Handler", order_path(order.id, :courier_id => 0), :method => :put, :class => "btn btn-sm btn-primary" %>
-            <% end  %>
-            
-          </li>
-      </ul>
-    </tr>
-    <%= render "orders/item_header" %>
+  <div class="order">
+    <div class="order-header row">
+      <div class="order-name col-sm-3">
+        <%= get_user_name(order.user_id) %>
+      </div>
+      <div class="order-courier col-sm-3">
+       Courier: <%= get_user_name order.courier_id %>
+      </div>
+      <div class="row col-sm-3">
+        <%= render "orders/order_total", :order_id => order.id, :order => order %>
+      </div>
+    </div>
+    <div class="row order-item header hidden-xs">
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-11 order-content">
+        <div>
+          <div class="col-sm-2">
+            <p class="label-item">Item</p>
+          </div>
+          <div class="col-sm-3">
+            <p class="label-item">Description</p>
+          </div>
+          <div class="item-price col-sm-2">
+            <p class="label-item">Price</p>
+            </div>
+          <div class="item-quantity col-sm-2">
+            <p class="label-item">Quantity</p>
+          </div>
+          <div class="item-total col-sm-2">
+            <p class="label-item">Total</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <% order.orderitems.each do |orderitem| %>
       <%= render "orders/item", :orderitem => orderitem %>
     <% end %>
-    <%= render "orders/order_total", :order_id => order.id, :order => order %>
-  </table>
-<% end %>
+    </div>
+  <% end %>
+  </div>
+</div>

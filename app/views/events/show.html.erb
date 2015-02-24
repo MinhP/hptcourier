@@ -35,7 +35,7 @@
   
   <ul id="eventers-list">
   <% @eventers.each do |eventer| %>
-    <li id="eventer-<%= eventer.user_id %>"><%= eventer.user.name %></li>
+    <li id="eventer-<%= eventer.user_id %>"><%= render :template => "users/usericon", :locals => {:@user => eventer.user} %></li>
   <% end %>
   </ul>
   <%=

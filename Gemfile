@@ -35,7 +35,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem "bootstrap-sass"
-gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
+#gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
 
 # handle all frontend package management thru bower
 source 'http://rails-assets.org' do

@@ -22,11 +22,13 @@ Rails.application.routes.draw do
       get :agg_orders
     end
   end
+  resources :eventers
   resources :orders
   resources :orderitems
   resources :users do
     member do
       get :order_list
+      get :usericon
     end
   end
 

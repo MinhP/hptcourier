@@ -5,16 +5,16 @@ class EventersController < ApplicationController
     # Find person's order for event
     eventer = Eventer.where(event_id: params[:event_id], user_id: current_user.id).first
     if eventer.nil?
-      eventer = Eventer.new(user_id: current_user.id, event_id: params[:event_id], event_status: "Going")
+      eventer = Eventer.new(user_id: current_user.id, event_id: params[:event_id], event_status: "going")
       eventer.save
     else
       if params[:status]
         eventer.update_attribute(:event_status, params[:status])
       else
-        if eventer.event_status == "Going"
-          eventer.update_attribute(:event_status, "Not Going")
+        if eventer.going?
+          eventer.notgoing!
         else   
-          eventer.update_attribute(:event_status, "Going")
+          eventer.going!
         end
       end
     end

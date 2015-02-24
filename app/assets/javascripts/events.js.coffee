@@ -4,7 +4,7 @@
 
 $(document).on 'ajax:success', '.btn-eventer', (status,data,xhr) ->
   btn = $(this)
-  if data.event_status == 'Going'
+  if data.event_status == 'going'
     user_id = data.user_id
     $("#eventer-going").addClass("hidden")
     $("#eventer-notgoing").removeClass("hidden")

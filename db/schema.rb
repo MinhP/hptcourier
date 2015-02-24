@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221170200) do
+ActiveRecord::Schema.define(version: 20150224050555) do
 
   create_table "eventers", force: true do |t|
     t.integer "event_id"
     t.integer "user_id"
-    t.string  "event_status"
+    t.integer "event_status", limit: 255
   end
 
   create_table "events", force: true do |t|

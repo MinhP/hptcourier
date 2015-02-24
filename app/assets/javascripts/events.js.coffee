@@ -16,5 +16,4 @@ $(document).on 'ajax:success', '.btn-eventer', (status,data,xhr) ->
   else
     $("#eventer-going").removeClass("hidden")
     $("#eventer-notgoing").addClass("hidden")
-    
     $("#eventer-"+data.user_id).remove()

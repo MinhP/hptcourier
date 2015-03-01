@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def pending_user?
+    redirect_to pending_path if !current_user.is_approved
+  end
+
   protected
-  
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end

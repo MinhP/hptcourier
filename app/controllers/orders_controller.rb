@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :pending_user? 
   include OrdersHelper
   include EventsHelper
   include UsersHelper

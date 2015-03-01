@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
-  
+  before_action :pending_user? 
+
   # list of supported currencies
   before_filter :set_currencies
   

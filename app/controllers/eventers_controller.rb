@@ -1,6 +1,7 @@
 class EventersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :pending_user? 
   
-
   def update
     # Find person's order for event
     eventer = Eventer.where(event_id: params[:event_id], user_id: current_user.id).first

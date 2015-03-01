@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   root 'events#index'
+
+  get 'pending' => 'users#pending'
+
   resources :events do
     member do
       get :all_orders
@@ -31,6 +34,11 @@ Rails.application.routes.draw do
       get :usericon
     end
   end
+
+scope '/admin' do
+  get 'approve' => 'admin#approve'
+  put 'approve_user/:id' => 'admin#approve_user'
+end
 
   # Example resource route with options:
   #   resources :products do

@@ -110,8 +110,6 @@ table tr td:last-child {
   #no-more-tables td:not(.nolabel):before { content: attr(data-title); }
 
 }
-
-*/
 /* User sign in and sign forms. */
 .border-form-div {
   max-width: auto;

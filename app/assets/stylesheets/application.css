@@ -34,6 +34,7 @@
 .title {
   border-bottom: 1px solid;
   border-color: #ccc;
+  margin-bottom: 10px;
 }
     
 a {
@@ -110,6 +111,7 @@ table tr td:last-child {
 
 }
 
+*/
 /* User sign in and sign forms. */
 .border-form-div {
   max-width: auto;

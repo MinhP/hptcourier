@@ -4,8 +4,12 @@
 <table class="table table-striped">
 <% @approve_users.each do |user| %>
   <tr>
-    <td class="label-name"><%= get_user_name user.id %></td>
-    <td class="pull-right"><%= link_to "Approve", {:action => :approve_user, :id => user.id}, :method => :put, :class => "btn btn-primary" %></td>
+    <td class="label-name">
+      <%= get_user_name user.id %>
+    </td>
+    <td class="pull-right">
+      <%= link_to "Approve", {:action => :approve_user, :id => user.id}, :method => :put, :class => "btn btn-primary" %>
+    </td>
   </tr>
 <% end %>
 </table>
